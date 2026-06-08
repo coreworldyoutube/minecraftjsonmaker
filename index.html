@@ -1,1 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Mini Industry Game</title>
+<style>
+  body { font-family: sans-serif; background:#111; color:#eee; text-align:center; }
+  button { padding:10px; margin:5px; }
+  .box { margin:20px auto; padding:10px; border:1px solid #444; width:300px; }
+</style>
+</head>
+<body>
 
+<h1>産業ミニゲーム</h1>
+
+<div class="box">
+  <p>鉄鉱石: <span id="ore">0</span></p>
+  <p>鉄インゴット: <span id="iron">0</span></p>
+  <p>お金: <span id="money">0</span></p>
+</div>
+
+<div class="box">
+  <button onclick="mine()">採掘</button>
+  <button onclick="smelt()">精錬</button>
+  <button onclick="sell()">売却</button>
+</div>
+
+<script>
+let ore = 0;
+let iron = 0;
+let money = 0;
+
+function update(){
+  document.getElementById("ore").textContent = ore;
+  document.getElementById("iron").textContent = iron;
+  document.getElementById("money").textContent = money;
+}
+
+function mine(){
+  ore += 1;
+  update();
+}
+
+function smelt(){
+  if(ore > 0){
+    ore -= 1;
+    iron += 1;
+  }
+  update();
+}
+
+function sell(){
+  if(iron > 0){
+    iron -= 1;
+    money += 5;
+  }
+  update();
+}
+
+update();
+</script>
+
+</body>
+</html>
